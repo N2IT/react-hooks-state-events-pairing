@@ -13,7 +13,6 @@ function Comments({ comments, setVisible, search }) {
             [commentId]:(prevUpVotes[commentId] || 0) + 1
             //if commentId doesn't exist it defaults to 0 then adds 1
         }))
-        debugger
     }
 
     // onClick={() => setThumbsUp(thumbsUp + 1)}>{video.upvotes + thumbsUp}👍
@@ -21,6 +20,9 @@ function Comments({ comments, setVisible, search }) {
 
 
     const viewComments = comments.comments
+    .filter((comment) => {
+        return comment.user.includes(search)
+    })
     .map((visible) => {
         if (setVisible) {
             return visible
@@ -28,10 +30,7 @@ function Comments({ comments, setVisible, search }) {
             return setVisible
         }
     })
-    .filter((comment) => {
-        console.log(comment.user.includes(search))
-        return comment.user.includes(search)
-    })
+  
     return (
         <div>
             <h2><em>2 Comments</em></h2>
@@ -39,7 +38,7 @@ function Comments({ comments, setVisible, search }) {
                 return (
                     <div key={m.comment}>
                         <h3><em>{m.user}</em></h3>
-                        <p id={m.comment} onClick={() => handleVoteClick(m.comment)}>{m.comment} <br /> Upvote ⬆️{upVotes[m.comment]}</p>
+                        <p id={m.comment} onClick={() => handleVoteClick(m.comment)}>{m.comment}{"Upvote ⬆️"}{upVotes[m.comment]}</p>
                     </div>
                 )
             })}
