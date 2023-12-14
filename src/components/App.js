@@ -8,9 +8,14 @@ function App() {
   const [thumbsUp, setThumbsUp] = useState(0)
   const [thumbsDown, setThumbsDown] = useState(0)
   const [setVisible, setAsVisible] = useState(true)
+  const [ search, setSearch ] = useState("")
 
   function handleClick() {
     setAsVisible((setVisible) => !setVisible)
+  }
+
+  function handleSearchChange(newSearch) {
+    setSearch(newSearch)
   }
 
   const cta = setVisible ? "Hide Comments" : "Show Comments"
@@ -34,11 +39,15 @@ function App() {
           video={video}
           handleClick={handleClick}
           cta={cta}
+          search={search}
+          setSearch={setSearch}
+          handleSearchChange={handleSearchChange}
         />
         <hr />
         <CommentsList
           setVisible={setVisible}
           video={video}
+          search={search}
           />
       </div>
     </div>

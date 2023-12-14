@@ -1,14 +1,15 @@
 import React from 'react'
 import Comments from './Comments'
 
-function CommentsList({ video, setVisible }) {
+function CommentsList({ video, setVisible, search }) {
 
     return (
         <div>
             <Comments
                 setVisible={setVisible}
                 comments={video}
-                key={""} 
+                key={""}
+                search={search}
                 />
         </div>
     )
