@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Comments({ comments, setVisible, handleVoteClick, newUpVote }) {
+function Comments({ comments, setVisible }) {
+
+    const [ upVotes, setAsUpVotes ] = useState(0)
+
+    function handleVoteClick(commentId){
+        setAsUpVotes(prevUpVotes => ({
+            ...prevUpVotes,
+            [commentId]:(prevUpVotes[commentId] || 0) + 1
+        }))
+        debugger
+    }
 
     // onClick={() => setThumbsUp(thumbsUp + 1)}>{video.upvotes + thumbsUp}👍
     // setAsUpVote(upVote + 1)
@@ -20,7 +30,7 @@ function Comments({ comments, setVisible, handleVoteClick, newUpVote }) {
                 return (
                     <div key={m.comment}>
                         <h3><em>{m.user}</em></h3>
-                        <p>{m.comment}<span id={m.comment} onClick={(e) => handleVoteClick(e.target.id)}>Upvote⬆️{newUpVote}</span></p>
+                        <p id={m.comment} onClick={() => handleVoteClick(m.comment)}>{m.comment} <br /> Upvote ⬆️{upVotes[m.comment]}</p>
                     </div>
                 )
             })}

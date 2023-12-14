@@ -1,7 +1,7 @@
 import React from 'react'
 import Comments from './Comments'
 
-function CommentsList({ video, setVisible, handleVoteClick, newUpVote }) {
+function CommentsList({ video, setVisible }) {
 
     return (
         <div>
@@ -9,8 +9,6 @@ function CommentsList({ video, setVisible, handleVoteClick, newUpVote }) {
                 setVisible={setVisible}
                 comments={video}
                 key={""} 
-                handleVoteClick={handleVoteClick}
-                newUpVote={newUpVote}
                 />
         </div>
     )
