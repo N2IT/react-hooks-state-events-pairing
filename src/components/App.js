@@ -8,6 +8,23 @@ function App() {
   const [thumbsUp, setThumbsUp] = useState(0)
   const [thumbsDown, setThumbsDown] = useState(0)
   const [setVisible, setAsVisible] = useState(true)
+  const [upVote, setAsUpVote] = useState(0)
+    
+  
+  const upVoteId = video.comments.map((comment) => {
+        return comment})
+    
+      function handleVoteClick(id){
+        const newUpVote = upVoteId.map((voted) => {
+          if(voted.comment === id) {
+            return upVote + 1
+          }
+        })
+        setAsUpVote(newUpVote)
+        // console.log(id)
+        // console.log(upVoteId)
+      }
+  
 
   function handleClick() {
     setAsVisible((setVisible) => !setVisible)
@@ -38,7 +55,11 @@ function App() {
         <hr />
         <CommentsList
           setVisible={setVisible}
-          video={video} />
+          video={video}
+          handleVoteClick={handleVoteClick}
+          upVote={upVote}
+          setAsUpVote={setAsUpVote}
+          newUpVote={newUpVote} />
       </div>
     </div>
   );
