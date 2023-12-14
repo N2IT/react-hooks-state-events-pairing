@@ -26,17 +26,19 @@ function App() {
         title="Thinking in React"
       />
       <div>
-        <TitleViews 
-        thumbsUp={thumbsUp}
-        setThumbsUp={setThumbsUp}
-        thumbsDown={thumbsDown}
-        setThumbsDown={setThumbsDown}
-        video={video}
-        handleClick={handleClick}
-        cta={cta}
+        <TitleViews
+          thumbsUp={thumbsUp}
+          setThumbsUp={setThumbsUp}
+          thumbsDown={thumbsDown}
+          setThumbsDown={setThumbsDown}
+          video={video}
+          handleClick={handleClick}
+          cta={cta}
         />
         <hr />
-        <CommentsList setVisible={setVisible} video={video} />
+        <CommentsList
+          setVisible={setVisible}
+          video={video} />
       </div>
     </div>
   );
