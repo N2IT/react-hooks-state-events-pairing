@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import video from "../data/video.js";
 import TitleViews from './TitleViews'
 import CommentsList from './CommentsList.js'
 
 function App() {
   // console.log("Here's your data:", video);
+  const [thumbsUp, setThumbsUp] = useState(0)
+  const [thumbsDown, setThumbsDown] = useState(0)
+  const [setVisible, setAsVisible] = useState(true)
+
+  function handleClick() {
+    setAsVisible((setVisible) => !setVisible)
+  }
+
+  const cta = setVisible ? "Hide Comments" : "Show Comments"
 
   return (
     <div className="App">
@@ -16,27 +25,18 @@ function App() {
         allowFullScreen
         title="Thinking in React"
       />
-
-      <div className="bodySection">
-
-        <TitleViews video={video} />
-        {/* <div className="titleViews">
-          <h1>React Today and Tomorrow and 90% Cleaner React With Hooks</h1>
-          <p>730707 Views | Uploaded Oct 26, 2018</p>
-        </div> */}
-        {/* <div className="uiFeatures">
-        <button>9210 👍</button><button>185 👎</button>
-        <button>Hide Comments</button>
-        </div>
-       */}
+      <div>
+        <TitleViews 
+        thumbsUp={thumbsUp}
+        setThumbsUp={setThumbsUp}
+        thumbsDown={thumbsDown}
+        setThumbsDown={setThumbsDown}
+        video={video}
+        handleClick={handleClick}
+        cta={cta}
+        />
         <hr />
-        <CommentsList video={video} />
-        {/* <div className="commentsSection">
-        <h2><em>2 Comments</em></h2>
-        <h3><em>duanebot</em></h3>
-        <p>first!</p>
-        <h3><em>gaeron</em></h3>
-        <p>What a great tutorial!</p> */}
+        <CommentsList setVisible={setVisible} video={video} />
       </div>
     </div>
   );
