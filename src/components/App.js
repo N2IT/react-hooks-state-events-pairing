@@ -1,9 +1,10 @@
 import React from 'react'
 import video from "../data/video.js";
 import TitleViews from './TitleViews'
+import CommentsList from './CommentsList.js'
 
 function App() {
-  console.log("Here's your data:", video);
+  // console.log("Here's your data:", video);
 
   return (
     <div className="App">
@@ -28,15 +29,15 @@ function App() {
         <button>Hide Comments</button>
         </div>
        */}
-      <hr />
-      <div className="commentsSection">
+        <hr />
+        <CommentsList video={video} />
+        {/* <div className="commentsSection">
         <h2><em>2 Comments</em></h2>
         <h3><em>duanebot</em></h3>
         <p>first!</p>
         <h3><em>gaeron</em></h3>
-        <p>What a great tutorial!</p>
+        <p>What a great tutorial!</p> */}
       </div>
-  </div>
     </div>
   );
 }
